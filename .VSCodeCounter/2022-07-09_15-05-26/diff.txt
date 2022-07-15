@@ -1,0 +1,60 @@
+Date : 2022-07-09 15:05:26
+Directory : h:\仓库管理系统\vue-manage_sys\src
+Total : 27 files,  -1757 codes, -27 comments, -147 blanks, all -1931 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| TypeScript |          2 |         12 |          1 |          2 |         15 |
+| Sass       |          4 |       -196 |         -4 |        -48 |       -248 |
+| JavaScript |          5 |       -722 |          0 |        -47 |       -769 |
+| Vue        |         16 |       -851 |        -24 |        -54 |       -929 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                      | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                         |         27 |     -1,757 |        -27 |       -147 |     -1,931 |
+| api                                                       |          1 |          7 |          0 |          2 |          9 |
+| components                                                |          1 |        -15 |          0 |         -6 |        -21 |
+| js                                                        |          5 |       -722 |          0 |        -47 |       -769 |
+| router                                                    |          1 |          5 |          1 |          0 |          6 |
+| style                                                     |          4 |       -196 |         -4 |        -48 |       -248 |
+| views                                                     |         15 |       -836 |        -24 |        -48 |       -908 |
++-----------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                  | language   | code       | comment    | blank      | total      |
++-----------------------------------------------------------+------------+------------+------------+------------+------------+
+| h:\仓库管理系统\vue-manage_sys\src\api\service.ts               | TypeScript |          7 |          0 |          2 |          9 |
+| h:\仓库管理系统\vue-manage_sys\src\components\AsideMenu.vue     | Vue        |        -15 |          0 |         -6 |        -21 |
+| h:\仓库管理系统\vue-manage_sys\src\js\bigsheet.js               | JavaScript |       -253 |         -1 |        -18 |       -272 |
+| h:\仓库管理系统\vue-manage_sys\src\js\editsheet.js              | JavaScript |         64 |          3 |          1 |         68 |
+| h:\仓库管理系统\vue-manage_sys\src\js\fixsheet.js               | JavaScript |       -253 |         -1 |        -18 |       -272 |
+| h:\仓库管理系统\vue-manage_sys\src\js\insheet.js                | JavaScript |       -254 |         -1 |        -18 |       -273 |
+| h:\仓库管理系统\vue-manage_sys\src\js\originbook.js             | JavaScript |        -26 |          0 |          6 |        -20 |
+| h:\仓库管理系统\vue-manage_sys\src\router\index.ts              | TypeScript |          5 |          1 |          0 |          6 |
+| h:\仓库管理系统\vue-manage_sys\src\style\bigsheet.sass          | Sass       |        -49 |         -1 |        -12 |        -62 |
+| h:\仓库管理系统\vue-manage_sys\src\style\fixsheet.sass          | Sass       |        -49 |         -1 |        -12 |        -62 |
+| h:\仓库管理系统\vue-manage_sys\src\style\insheet.sass           | Sass       |        -49 |         -1 |        -12 |        -62 |
+| h:\仓库管理系统\vue-manage_sys\src\style\smalluser.sass         | Sass       |        -49 |         -1 |        -12 |        -62 |
+| h:\仓库管理系统\vue-manage_sys\src\views\AllSumView.vue         | Vue        |          0 |          0 |          1 |          1 |
+| h:\仓库管理系统\vue-manage_sys\src\views\BigSheetView.vue       | Vue        |       -182 |         -6 |        -12 |       -200 |
+| h:\仓库管理系统\vue-manage_sys\src\views\ClassifySheetsView.vue | Vue        |          0 |          0 |          1 |          1 |
+| h:\仓库管理系统\vue-manage_sys\src\views\CreateBookView.vue     | Vue        |         10 |          0 |          1 |         11 |
+| h:\仓库管理系统\vue-manage_sys\src\views\EditSheetView.vue      | Vue        |          5 |          0 |          0 |          5 |
+| h:\仓库管理系统\vue-manage_sys\src\views\FixSheetView.vue       | Vue        |       -183 |         -6 |        -12 |       -201 |
+| h:\仓库管理系统\vue-manage_sys\src\views\InDetailView.vue       | Vue        |          0 |          0 |          1 |          1 |
+| h:\仓库管理系统\vue-manage_sys\src\views\InSheetView.vue        | Vue        |       -183 |         -6 |        -12 |       -201 |
+| h:\仓库管理系统\vue-manage_sys\src\views\InSumView.vue          | Vue        |          0 |          0 |          1 |          1 |
+| h:\仓库管理系统\vue-manage_sys\src\views\IndexView.vue          | Vue        |        -43 |          0 |         -4 |        -47 |
+| h:\仓库管理系统\vue-manage_sys\src\views\InventoryView.vue      | Vue        |          0 |          0 |          1 |          1 |
+| h:\仓库管理系统\vue-manage_sys\src\views\OriginBookView.vue     | Vue        |        -77 |          0 |         -4 |        -81 |
+| h:\仓库管理系统\vue-manage_sys\src\views\OutDetailView.vue      | Vue        |          0 |          0 |          1 |          1 |
+| h:\仓库管理系统\vue-manage_sys\src\views\OutSumView.vue         | Vue        |          0 |          0 |          1 |          1 |
+| h:\仓库管理系统\vue-manage_sys\src\views\SmallUserView.vue      | Vue        |       -183 |         -6 |        -12 |       -201 |
+| Total                                                     |            |     -1,757 |        -27 |       -147 |     -1,931 |
++-----------------------------------------------------------+------------+------------+------------+------------+------------+

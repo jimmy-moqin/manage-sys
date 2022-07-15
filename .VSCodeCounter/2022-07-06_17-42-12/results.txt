@@ -1,0 +1,48 @@
+Date : 2022-07-06 17:42:12
+Directory : h:\仓库管理系统\vue-manage_sys\src
+Total : 14 files,  972 codes, 11 comments, 118 blanks, all 1101 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| Vue        |          4 |        489 |          7 |         52 |        548 |
+| JavaScript |          2 |        246 |          1 |         17 |        264 |
+| Sass       |          2 |        129 |          2 |         29 |        160 |
+| TypeScript |          6 |        108 |          1 |         20 |        129 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                  | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                     |         14 |        972 |         11 |        118 |      1,101 |
+| api                                                   |          2 |         56 |          0 |          8 |         64 |
+| components                                            |          2 |        128 |          0 |         17 |        145 |
+| js                                                    |          1 |        244 |          1 |         17 |        262 |
+| router                                                |          1 |         18 |          0 |          5 |         23 |
+| store                                                 |          1 |         13 |          0 |          2 |         15 |
+| style                                                 |          2 |        129 |          2 |         29 |        160 |
+| views                                                 |          2 |        360 |          7 |         31 |        398 |
++-------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                              | language   | code       | comment    | blank      | total      |
++-------------------------------------------------------+------------+------------+------------+------------+------------+
+| h:\仓库管理系统\vue-manage_sys\src\App.vue                  | Vue        |          3 |          0 |          4 |          7 |
+| h:\仓库管理系统\vue-manage_sys\src\api\index.ts             | TypeScript |          5 |          0 |          2 |          7 |
+| h:\仓库管理系统\vue-manage_sys\src\api\service.ts           | TypeScript |         51 |          0 |          6 |         57 |
+| h:\仓库管理系统\vue-manage_sys\src\components\AsideMenu.vue | Vue        |        126 |          0 |         17 |        143 |
+| h:\仓库管理系统\vue-manage_sys\src\components\index.js      | JavaScript |          2 |          0 |          0 |          2 |
+| h:\仓库管理系统\vue-manage_sys\src\js\originbook.js         | JavaScript |        244 |          1 |         17 |        262 |
+| h:\仓库管理系统\vue-manage_sys\src\main.ts                  | TypeScript |         16 |          0 |          4 |         20 |
+| h:\仓库管理系统\vue-manage_sys\src\router\index.ts          | TypeScript |         18 |          0 |          5 |         23 |
+| h:\仓库管理系统\vue-manage_sys\src\shims-vue.d.ts           | TypeScript |          5 |          1 |          1 |          7 |
+| h:\仓库管理系统\vue-manage_sys\src\store\index.ts           | TypeScript |         13 |          0 |          2 |         15 |
+| h:\仓库管理系统\vue-manage_sys\src\style\index.sass         | Sass       |         80 |          1 |         17 |         98 |
+| h:\仓库管理系统\vue-manage_sys\src\style\originbook.sass    | Sass       |         49 |          1 |         12 |         62 |
+| h:\仓库管理系统\vue-manage_sys\src\views\IndexView.vue      | Vue        |        174 |          1 |         19 |        194 |
+| h:\仓库管理系统\vue-manage_sys\src\views\OriginBookView.vue | Vue        |        186 |          6 |         12 |        204 |
+| Total                                                 |            |        972 |         11 |        118 |      1,101 |
++-------------------------------------------------------+------------+------------+------------+------------+------------+

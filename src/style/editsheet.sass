@@ -1,0 +1,98 @@
+
+$normal-blue: #409EFF
+$light-blue: #ECF5FF
+
+$word-black: rgba(0,0,0,0.87)
+$bg-white: #f6f6f6
+
+$inactive-color: #909399
+
+// div内元素垂直居中对齐
+@mixin vertical-horizontal-center
+    display: flex
+    flex-direction: row
+    justify-content: center
+    align-items: center
+
+@mixin vertical-center
+    display: flex
+    flex-direction: row
+    align-items: center
+
+.header
+    background-color: $light-blue
+    position: relative
+    width: 100%
+    height: 60px
+    background-color: #fff
+    border-bottom: 1px solid #e9e9e9
+    font-size: 26px
+    font-weight: bold
+    color: $normal-blue
+    background-color: $light-blue
+    @include vertical-horizontal-center
+.header-span
+    font-size: 16px
+    color: $word-black
+    margin-left: 16px
+    transform: translateY(15%)
+
+.float-input
+    font-size: 18px
+    position: absolute
+    width: 140px
+    height: 40px
+    z-index: 99
+    visibility: hidden
+
+.input-select
+    font-size: 18px
+    position: absolute
+    top: 0
+    width: 400px
+    height: 40px
+    z-index: 99
+    visibility: hidden
+
+.pull-button
+    position: fixed
+    top: 45%
+    right: 0
+
+    width: 30px
+    height: 60px
+    z-index: 99
+.drawer-header
+    width: 100%
+    height: 60px
+    background-color: #fff
+    border-bottom: 1px solid #e9e9e9
+    font-size: 26px
+    font-weight: bold
+    color: $normal-blue
+    background-color: $light-blue
+    @include vertical-horizontal-center
+.drawer-subtitle
+    font-size: 20px
+    color: $word-black
+    margin-left: 16px
+    font-weight: bold
+.drawer-words
+    margin-top: 16px
+    font-size: 20px
+    color: $word-black
+    margin-left: 32px
+    @include vertical-horizontal-center
+.highline
+    color: $normal-blue
+    font-weight: bold
+    font-size: 24px
+    padding-left: 16px
+    padding-right: 16px
+.unit-words
+    font-size: 16px
+    color: $word-black
+    margin-left: px
+
+.time-slider
+    width: 300px

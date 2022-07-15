@@ -1,0 +1,16 @@
+"filename", "language", "Sass", "TypeScript", "Vue", "JavaScript", "comment", "blank", "total"
+"h:\仓库管理系统\vue-manage_sys\src\App.vue", "Vue", 0, 0, 3, 0, 0, 4, 7
+"h:\仓库管理系统\vue-manage_sys\src\api\index.ts", "TypeScript", 0, 5, 0, 0, 0, 2, 7
+"h:\仓库管理系统\vue-manage_sys\src\api\service.ts", "TypeScript", 0, 51, 0, 0, 0, 6, 57
+"h:\仓库管理系统\vue-manage_sys\src\components\AsideMenu.vue", "Vue", 0, 0, 126, 0, 0, 17, 143
+"h:\仓库管理系统\vue-manage_sys\src\components\index.js", "JavaScript", 0, 0, 0, 2, 0, 0, 2
+"h:\仓库管理系统\vue-manage_sys\src\js\originbook.js", "JavaScript", 0, 0, 0, 244, 1, 17, 262
+"h:\仓库管理系统\vue-manage_sys\src\main.ts", "TypeScript", 0, 16, 0, 0, 0, 4, 20
+"h:\仓库管理系统\vue-manage_sys\src\router\index.ts", "TypeScript", 0, 18, 0, 0, 0, 5, 23
+"h:\仓库管理系统\vue-manage_sys\src\shims-vue.d.ts", "TypeScript", 0, 5, 0, 0, 1, 1, 7
+"h:\仓库管理系统\vue-manage_sys\src\store\index.ts", "TypeScript", 0, 13, 0, 0, 0, 2, 15
+"h:\仓库管理系统\vue-manage_sys\src\style\index.sass", "Sass", 80, 0, 0, 0, 1, 17, 98
+"h:\仓库管理系统\vue-manage_sys\src\style\originbook.sass", "Sass", 49, 0, 0, 0, 1, 12, 62
+"h:\仓库管理系统\vue-manage_sys\src\views\IndexView.vue", "Vue", 0, 0, 174, 0, 1, 19, 194
+"h:\仓库管理系统\vue-manage_sys\src\views\OriginBookView.vue", "Vue", 0, 0, 186, 0, 6, 12, 204
+"Total", "-", 129, 108, 489, 246, 11, 118, 1101
