@@ -140,7 +140,7 @@
                 <el-button type="primary" @click="check" size="large">校验</el-button>
             </el-col>
             <el-col span="12">
-                <el-button type="primary" @click="save" size="large">保存</el-button>
+                <el-button type="primary" @click="saveall" size="large">保存</el-button>
             </el-col>
         </el-row>
         <div style="height:64px"></div>

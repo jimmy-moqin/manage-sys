@@ -1,6 +1,7 @@
 import { defineComponent } from 'vue'
+import { genFileId } from 'element-plus'
 import AsideMenu from "@/components/AsideMenu";
-import { getBooks, getSheets_all, createNewSheet, deleteSheet } from '@/api/service';
+import { getBooks, getSheets_all, createNewSheet, deleteSheet, uploadInSheet } from '@/api/service';
 export default defineComponent({
     name: "OriginBookView",
     components: {
@@ -10,6 +11,7 @@ export default defineComponent({
         return {
             activeBookName: "",
             allSheetsData: [],
+            showSheetsData: [],
             currentRow: 0,
 
             sheetTypeFilter: [{
@@ -75,6 +77,11 @@ export default defineComponent({
                     { required: true, message: "请输入制表人员", trigger: "blur" },
                 ],
             },
+            searchinfo: "",
+
+            file_list: [],
+
+            uploadView: false,
         }
     },
 
@@ -92,6 +99,7 @@ export default defineComponent({
                 this.activeBookName = activedata[0].BookName;
                 getSheets_all(this.activeBookName).then(res => {
                     this.allSheetsData = res['data']['data'];
+                    this.showSheetsData = this.allSheetsData;
                 });
             });
 
@@ -177,7 +185,7 @@ export default defineComponent({
                         postdata.sheettype = "入库单";
                         postdata.sheetid = this.newsheet.sheetid;
                         postdata.sheetname = this.newsheet.sheetname;
-                        postdata.inputtime = this.newsheet.inputtime;
+                        postdata.outputtime = this.newsheet.inputtime;
                         postdata.createtime = postdata.sheetid.substring(1, postdata.sheetid.length);
                         postdata.updatetime = postdata.createtime;
                         postdata.createperson = this.newsheet.createperson;
@@ -282,15 +290,6 @@ export default defineComponent({
                     type: 'warning'
                 }).then(() => {
 
-                    if (row.SheetType == "大料单") {
-                        type = "bigsheet";
-                    } else if (row.SheetType == "小用户") {
-                        type = "smalluser";
-                    } else if (row.SheetType == "维修单") {
-                        type = "fixsheet";
-                    } else if (row.SheetType == "入库单") {
-                        type = "insheet";
-                    }
                     this.$router.push({
                         path: '/edit/' + row.SheetID,
                         name: "Edit",
@@ -315,5 +314,71 @@ export default defineComponent({
             }
         },
 
+        handleExceed(files) {
+            this.$refs.upload.clearFiles()
+            var file = files[0]
+            file.uid = genFileId()
+            this.$refs.upload.handleStart(file)
+        },
+        handleBeforeRemove(file) {
+            return this.$confirm(`确定移除 ${ file.name }?`)
+        },
+
+        uploadSheet() {
+            this.uploadView = true;
+        },
+
+        checkFileType(file) {
+            var type = file.type;
+            if (type == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
+                return true;
+            } else {
+                // warning
+                this.$message({
+                    message: '请上传后缀名为.xlsx的Excel文件',
+                    type: 'warning'
+                });
+                return false;
+            }
+        },
+        uploadRequest(file) {
+            console.log(file.file);
+            var formData = new FormData();
+            formData.append("file", file.file);
+            formData.append("option", 'upload');
+            formData.append("sheetid", this.currentRow.SheetID);
+            uploadInSheet(formData).then(res => {
+                console.log(res);
+                var code = res['data']['code'];
+                if (code == 200) {
+                    this.$message({
+                        message: '上传成功',
+                        type: 'success'
+                    });
+                    this.convert();
+                    this.uploadView = false;
+                } else {
+                    this.$message({
+                        message: '上传失败',
+                        type: 'error'
+                    });
+                    this.uploadView = false;
+                }
+            });
+        },
+        uploadAct() {
+            this.$refs.upload.submit();
+        },
+
+        whenSearch() {
+            var info = this.searchinfo
+            if (info != '') {
+                this.showSheetsData = this.allSheetsData.filter(item => {
+                    return item.SheetID.indexOf(info) > -1 || item.SheetName.indexOf(info) > -1 || item.BookName.indexOf(info) > -1 || item.CreateTime.indexOf(info) > -1;
+                })
+            } else {
+                this.showSheetsData = this.allSheetsData;
+            }
+        },
     }
 });

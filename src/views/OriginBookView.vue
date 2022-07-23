@@ -10,31 +10,47 @@
                 <span class="actbk-name"> {{ activeBookName }}</span>
             </el-header>
             <el-main>
-                <div class="option-div">
-                    <el-button type="primary" @click="createNewSheetMethod">
-                        <el-icon>
-                            <DocumentAdd />
-                        </el-icon>
-                        <span> </span>
-                        新建料单
-                    </el-button>
-                    <el-button type="primary" @click="editSheet">
-                        <el-icon>
-                            <Edit />
-                        </el-icon>
-                        <span> </span>
-                        修改料单
-                    </el-button>
-                    <el-button type="danger" style="margin-left:32px" @click="delSheet">
-                        <el-icon>
-                            <Delete />
-                        </el-icon>
-                        <span> </span>
-                        删除料单
-                    </el-button>
-                </div>
+                <el-row class="option-div" justify="center">
+                    <el-col :span="4">
+                        <el-button type="primary" @click="createNewSheetMethod">
+                            <el-icon>
+                                <DocumentAdd />
+                            </el-icon>
+                            <span> </span>
+                            新建料单
+                        </el-button>
+                    </el-col>
+                    <el-col :span="4">
+                        <el-button type="primary" @click="editSheet">
+                            <el-icon>
+                                <Edit />
+                            </el-icon>
+                            <span> </span>
+                            修改料单
+                        </el-button>
+                    </el-col>
+                    <el-col :span="4">
+                        <el-button type="danger" @click="delSheet">
+                            <el-icon>
+                                <Delete />
+                            </el-icon>
+                            <span> </span>
+                            删除料单
+                        </el-button>
+                    </el-col>
+                    <el-col :span="12">
+                        <el-input style="width:100%" @input="whenSearch" v-model="searchinfo">
+                            <template #prepend>
+                                <el-icon class="search-icon">
+                                    <Search />
+                                </el-icon>
+                            </template>
+                        </el-input>
+                    </el-col>
+
+                </el-row>
                 <el-divider />
-                <el-table stripe="true" style="width: 100%" :data="allSheetsData" highlight-current-row
+                <el-table stripe="true" style="width: 100%" :data="showSheetsData" highlight-current-row
                     @current-change="handleCurrentChange">
                     <el-table-column prop="SheetID" sortable label="料单ID" width="150px" />
                     <el-table-column prop="BookName" label="账本名称" width="100" />
@@ -44,8 +60,14 @@
                     <el-table-column prop="CreateTime" label="料单创建时间" width="120" />
                     <el-table-column prop="UpdateTime" label="最后编辑时间" width="120" />
                     <el-table-column prop="CreatePerson" label="操作">
-                        <template #default>
-                            <el-button type="primary" size="small" @click="editSheet">修改</el-button>
+
+                        <template #default="scope">
+                            <el-button type="primary" size="small" @click="editSheet"
+                                v-if="scope.row.SheetType != '入库单'">修改
+                            </el-button>
+                            <el-button type="success" size="small" @click="uploadSheet"
+                                v-if="scope.row.SheetType == '入库单'">上传
+                            </el-button>
                             <el-button type="danger" size="small" @click="delSheet">删除</el-button>
                         </template>
                     </el-table-column>
@@ -89,10 +111,11 @@
             </el-form-item>
             <!-- 当选择入库单时显示 -->
             <el-form-item label="入库时间" v-if="isSelectInSheet == true" prop="inputtime">
-                <el-date-picker type="date" placeholder="请选择入库时间" v-model="newsheet.outputtime" format="YYYY-MM-DD"
+                <el-date-picker type="date" placeholder="请选择入库时间" v-model="newsheet.inputtime" format="YYYY-MM-DD"
                     value-format="x">
                 </el-date-picker>
             </el-form-item>
+
             <el-form-item label="制表人员" prop="createperson">
                 <el-input v-model="newsheet.createperson" />
             </el-form-item>
@@ -104,7 +127,32 @@
             </span>
         </template>
     </el-dialog>
+    <!-- 上传对话框 -->
+    <el-dialog v-model="uploadView" title="上传入库单">
 
+        <el-upload class="upload-demo" drag :limit="1" :http-request="uploadRequest" :before-upload="checkFileType"
+            accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" :auto-upload="false"
+            :exceed="handleExceed" :before-remove="handleBeforeRemove" ref="upload">
+
+            <el-icon class="el-icon--upload">
+                <upload-filled />
+            </el-icon>
+            <div class="el-upload__text">
+                将文件拖拽至此处或<em>点击此处上传</em>
+            </div>
+            <template #tip>
+                <div class="el-upload__tip">
+                    仅能上传xlsx格式的文件, 若为xls格式请转换
+                </div>
+
+            </template>
+        </el-upload>
+        <template #footer>
+            <el-button type="primary" @click="uploadAct">
+                点击上传
+            </el-button>
+        </template>
+    </el-dialog>
 
 </template>
 
@@ -112,6 +160,7 @@
 
 <style lang="sass" scoped>
 @import '@/style/originbook.sass'
+@import '../../public/css/common.sass'
 .el-main
     padding-left: 10%
     padding-right: 10%

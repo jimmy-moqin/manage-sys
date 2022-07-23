@@ -9,6 +9,16 @@
                 <span>已分类料单</span>
             </el-header>
             <el-main>
+                <el-row>
+                    <el-col>
+                        <el-button type="primary" @click="exportAllClassifySheets">
+                            <el-icon>
+                                <Download />
+                            </el-icon>
+                            导出所有料单
+                        </el-button>
+                    </el-col>
+                </el-row>
                 <el-divider />
                 <el-table stripe="true" style="width: 100%" :data="allSheetsData" highlight-current-row
                     @current-change="handleCurrentChange">

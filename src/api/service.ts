@@ -80,6 +80,15 @@ export function saveSheet(data: any) {
     })
 }
 
+export function saveClsSheet(data: any) {
+    return request({
+        url: '/saveclssheet/',
+        method: 'post',
+        data: qs.stringify(data),
+    })
+}
+
+
 export function getSheetCon(sheetid: any) {
     return request({
         url: '/getsheetcon/',
@@ -93,5 +102,21 @@ export function getSingleSheet(sheetid: any) {
         url: '/getsinglesheet/',
         method: 'get',
         params: { "option": "single", "sheetid": sheetid }
+    })
+}
+
+export function uploadInSheet(data: any) {
+    return request({
+        url: '/uploadinsheet/',
+        method: 'post',
+        data: data,
+    })
+}
+
+export function exportSheets(opt: string, sheetid: string) {
+    return request({
+        url: '/export/',
+        method: 'get',
+        params: { "option": opt, "sheetid": sheetid },
     })
 }

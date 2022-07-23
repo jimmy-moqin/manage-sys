@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { getDetail, saveSheet, getSheetCon } from '@/api/service';
+import { getDetail, saveSheet, getSheetCon, saveClsSheet } from '@/api/service';
 
 export default defineComponent({
     name: "EditSheetView",
@@ -393,7 +393,6 @@ export default defineComponent({
                     "content": JSON.stringify(this.table_original_data)
                 };
                 saveSheet(post_data).then(res => {
-                    console.log(res["data"]);
                     if (res.data.code == 200) {
                         this.$message({
                             showClose: true,
@@ -409,8 +408,8 @@ export default defineComponent({
                             type: "error"
                         });
                     }
+                });
 
-                })
             } else {
                 this.$message({
                     showClose: true,
@@ -418,6 +417,86 @@ export default defineComponent({
                     type: "error"
                 });
             }
+        },
+
+        savecls() {
+            getDetail(0).then(res => {
+                var detailMap = new Map();
+                for (var i = 0; i < res.data.data.length; i++) {
+                    detailMap.set(res.data.data[i]["GoodsName"], {
+                        "GoodsPrice": res.data.data[i]["GoodsPrice"],
+                        "GoodsUnit": res.data.data[i]["GoodsUnit"],
+                        "GoodsType": res.data.data[i]["GoodsType"],
+                        "GoodsModel": res.data.data[i]["GoodsModel"],
+                    });
+                }
+                var cls_data = [];
+                for (var j = 0; j < this.table_original_data.length; j++) {
+                    var name = this.table_original_data[j]["MaterialName"];
+                    var count = this.table_original_data[j]["MaterialCount"];
+                    var price = this.table_original_data[j]["MaterialPrice"];
+                    var total = this.table_original_data[j]["MaterialTotal"];
+                    if (name != null && count != null) {
+                        var cls_item = {
+                            "MaterialName": name,
+                            "MaterialCount": count,
+                            "MaterialPrice": price,
+                            "MaterialTotal": total,
+                            "MaterialUnit": detailMap.get(name)["GoodsUnit"],
+                            "MaterialType": detailMap.get(name)["GoodsType"],
+                            "MaterialModel": detailMap.get(name)["GoodsModel"],
+                        };
+                        var type = detailMap.get(name)["GoodsType"];
+                        if (type == "管材类") {
+                            cls_item.MaterialType = "1";
+                        } else if (type == "管件类") {
+                            cls_item.MaterialType = "2";
+                        } else if (type == "水表类") {
+                            cls_item.MaterialType = "3";
+                        } else if (type == "阀门类") {
+                            cls_item.MaterialType = "4";
+                        } else if (type == "修备类") {
+                            cls_item.MaterialType = "5";
+                        } else if (type == "其他类") {
+                            cls_item.MaterialType = "6";
+                        }
+                        cls_data.push(cls_item);
+                    }
+                }
+                this.cls_data = cls_data;
+                this.cls_data.sort(function(a, b) {
+                    return a.MaterialType - b.MaterialType;
+                });
+                var post_cls_data = {
+                    "opt": "save",
+                    "sheetid": this.sheetid,
+                    "clscontent": JSON.stringify(this.cls_data),
+                };
+                saveClsSheet(post_cls_data).then(res => {
+                    if (res.data.code == 200) {
+                        this.$message({
+                            showClose: true,
+                            message: "分类成功",
+                            type: "success"
+                        });
+                        this.drawer = false;
+                        this.isSave = true;
+                    } else {
+                        this.$message({
+                            showClose: true,
+                            message: "分类失败",
+                            type: "error"
+                        });
+                    }
+                })
+            }).catch(err => {
+                console.log(err);
+            })
+        },
+
+        saveall() {
+            this.save();
+            this.savecls();
         }
     },
 })

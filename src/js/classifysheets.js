@@ -22,7 +22,9 @@ export default defineComponent({
                 });
                 this.activeBookName = activedata[0].BookName;
                 getSheets_all(this.activeBookName).then(res => {
-                    this.allSheetsData = res['data']['data'];
+                    this.allSheetsData = res['data']['data'].filter(item => {
+                        return item.SheetType == '大料单';
+                    });
                 });
             });
 
@@ -49,6 +51,9 @@ export default defineComponent({
                     }
                 });
             }
-        }
+        },
+        exportAllClassifySheets() {
+            this.$message.warning('该功能暂未开放');
+        },
     },
 })
